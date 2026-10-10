@@ -1,167 +1,284 @@
-
 <!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EVER Academy – odborné vzdelávanie v oblasti barberingu.">
-  <title>EVER Academy | Barber vzdelávanie</title>
+  <meta name="description" content="EVER Academy – pripravované odborné vzdelávanie v oblasti barberingu. Informácie o programe Barbier/Barbierka, lektoroch a kontakte.">
+  <meta name="theme-color" content="#f4f1eb">
+  <title>EVER Academy | Odborné vzdelávanie v barberingu</title>
   <style>
+    :root {
+      --paper: #f4f1eb;
+      --white: #fffdf9;
+      --ink: #20231f;
+      --muted: #676b63;
+      --line: #d9d6cd;
+      --accent: #8b927f;
+      --accent-dark: #555e4c;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --max: 1160px;
+    }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f3ef;
-      color: #242424;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 3px; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .topline { border-bottom: 1px solid var(--line); }
     header {
-      background: #202528;
-      color: white;
-      padding: 24px 7%;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 28px; padding: 20px 0;
     }
-    .logo {
-      font-size: 25px;
-      font-weight: 700;
-      letter-spacing: 4px;
+    .brand { text-decoration: none; display: inline-flex; flex-direction: column; line-height: 1.15; }
+    .brand strong { font-size: 21px; letter-spacing: .22em; font-weight: 700; }
+    .brand span { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: 7px; }
+    nav { display: flex; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { text-decoration: none; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    nav a:hover { color: var(--ink); }
+    .hero { padding: 100px 0 92px; border-bottom: 1px solid var(--line); }
+    .eyebrow { text-transform: uppercase; letter-spacing: .19em; color: var(--accent-dark); font-size: 11px; font-weight: 700; }
+    h1, h2, h3 { margin: 0; font-weight: 400; }
+    h1 { font-family: var(--serif); font-size: clamp(48px, 8vw, 100px); line-height: .98; letter-spacing: -.045em; max-width: 850px; margin: 24px 0 26px; }
+    h1 em { color: var(--accent-dark); font-weight: 400; }
+    .hero p { max-width: 620px; font-size: 17px; color: var(--muted); margin: 0; }
+    .hero-bottom { margin-top: 38px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .button { display: inline-block; background: var(--ink); color: var(--white); text-decoration: none; padding: 13px 20px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); }
+    .button:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .text-link { font-size: 13px; color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); padding: 8px 12px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #a58b5b; }
+    section.content { padding: 78px 0; border-bottom: 1px solid var(--line); }
+    .section-grid { display: grid; grid-template-columns: minmax(180px, .75fr) minmax(0, 1.6fr); gap: 54px; }
+    .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: .18em; color: var(--muted); padding-top: 8px; }
+    h2 { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 52px); line-height: 1.08; letter-spacing: -.025em; margin-bottom: 22px; }
+    h3 { font-family: var(--serif); font-size: 25px; line-height: 1.2; margin-bottom: 12px; }
+    p { margin: 0 0 16px; }
+    .lead { font-family: var(--serif); font-size: 23px; line-height: 1.45; max-width: 760px; }
+    .muted { color: var(--muted); }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
+    .card { background: var(--white); border: 1px solid var(--line); padding: 25px; }
+    .card p:last-child { margin-bottom: 0; }
+    .number { font-family: var(--serif); font-size: 32px; color: var(--accent-dark); margin-bottom: 14px; }
+    ul.clean { margin: 18px 0 0; padding: 0; list-style: none; }
+    ul.clean li { border-top: 1px solid var(--line); padding: 12px 0 12px 22px; position: relative; }
+    ul.clean li::before { content: "—"; position: absolute; left: 0; color: var(--accent-dark); }
+    .program-note { background: #eae7de; padding: 22px 24px; margin-top: 28px; font-size: 13px; color: #53574f; }
+    .details { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 30px; margin-top: 26px; }
+    .detail { border-top: 1px solid var(--line); padding: 16px 0; }
+    .detail dt { font-size: 10px; text-transform: uppercase; letter-spacing: .15em; color: var(--muted); margin-bottom: 5px; }
+    .detail dd { margin: 0; font-size: 15px; }
+    .lectors { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .lecturer-card { border: 1px solid var(--line); padding: 28px; background: rgba(255,253,249,.55); }
+    .lecturer-card .role { color: var(--accent-dark); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 14px; }
+    .lecturer-card h3 { font-size: 30px; }
+    .lecturer-card p { color: var(--muted); font-size: 14px; }
+    .contact-panel { background: var(--ink); color: var(--white); padding: clamp(28px, 5vw, 58px); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    .contact-panel h2 { color: var(--white); }
+    .contact-panel .muted { color: #c5c7bf; }
+    .contact-items { display: grid; gap: 14px; }
+    .contact-items a { color: var(--white); text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    footer { padding: 28px 0 36px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; color: var(--muted); font-size: 11px; }
+    .foot-brand { letter-spacing: .18em; font-weight: 700; color: var(--ink); }
+    .legal-note { font-size: 12px; color: var(--muted); max-width: 800px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, var(--max)); }
+      header { align-items: flex-start; flex-direction: column; gap: 18px; }
+      nav { justify-content: flex-start; gap: 12px 18px; }
+      .hero { padding: 72px 0 64px; }
+      section.content { padding: 56px 0; }
+      .section-grid { grid-template-columns: 1fr; gap: 16px; }
+      .cards, .lectors, .details, .contact-panel { grid-template-columns: 1fr; }
+      .lead { font-size: 20px; }
     }
-    .logo span {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 5px;
-      color: #c7bba8;
-    }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 65px 24px;
-    }
-    .eyebrow {
-      color: #85745f;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-    h1 {
-      font-size: clamp(36px, 6vw, 60px);
-      line-height: 1.12;
-      margin: 18px 0;
-      letter-spacing: -1.5px;
-    }
-    h2 { margin-top: 42px; font-size: 24px; }
-    .intro { font-size: 19px; max-width: 680px; }
-    .panel {
-      background: white;
-      padding: 28px;
-      margin-top: 28px;
-      border: 1px solid #e5e0d8;
-    }
-    li { margin-bottom: 8px; }
-    footer {
-      background: #202528;
-      color: #ddd;
-      padding: 28px 7%;
-      font-size: 13px;
-    }
-    .notice {
-      background: #eae5dc;
-      padding: 16px;
-      font-size: 14px;
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">EVER <span>ACADEMY</span></div>
-  </header>
+  <div class="topline">
+    <header class="wrap">
+      <a class="brand" href="#top" aria-label="EVER Academy – úvod">
+        <strong>EVER ACADEMY</strong>
+        <span>Odborné vzdelávanie · Barbering</span>
+      </a>
+      <nav aria-label="Hlavná navigácia">
+        <a href="#program">Program</a>
+        <a href="#vystupy">Čo sa naučíte</a>
+        <a href="#lektori">Lektori</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+  </div>
 
-  <main>
-    <p class="eyebrow">Odborné vzdelávanie</p>
-    <h1>Remeslo, ktoré sa učí praxou.</h1>
-    <p class="intro">
-      EVER Academy pripravuje záujemcov na prácu v oblasti
-      barberingu prostredníctvom odbornej teórie a praktického
-      tréningu pod vedením skúseného odborníka.
-    </p>
-
-    <section class="panel">
-      <p class="eyebrow">Vzdelávací program</p>
-      <h2>Barbier / Barbierka</h2>
-      <p><strong>Zameranie:</strong> pánske strihy, úprava brady,
-      holenie, starostlivosť o vlasy a pokožku a profesionálna
-      práca s klientom.</p>
-      <p><strong>Forma:</strong> individuálna výučba s kombináciou
-      teórie, praktických ukážok a riadeného tréningu.</p>
-      <p><strong>Rozsah:</strong> pripravovaný vzdelávací program.</p>
-      <p><strong>Cieľová skupina:</strong> záujemcovia o barbering
-      bez predchádzajúcich skúseností.</p>
-      <p><strong>Vstupné požiadavky:</strong> budú zverejnené po
-      potvrdení podmienok programu.</p>
-      <p><strong>Hodnotenie:</strong> priebežné overovanie vedomostí
-      a praktických zručností.</p>
-      <p class="notice">
-        Vzdelávací program je v príprave. V súčasnosti nie je
-        prezentovaný ako akreditovaný program.
-      </p>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Odborné vzdelávanie v oblasti barberingu</div>
+        <h1>Remeslo, ktoré<br><em>má svoj štýl.</em></h1>
+        <p>EVER Academy pripravuje odborné vzdelávanie pre záujemcov o profesiu barbier. Dôraz kladieme na poctivé remeselné základy, bezpečnú prácu, praktický nácvik a profesionálny prístup ku klientovi.</p>
+        <div class="hero-bottom">
+          <span class="status">Program v príprave</span>
+          <a class="button" href="#program">Spoznajte program</a>
+          <a class="text-link" href="#kontakt">Kontaktovať akadémiu ↗</a>
+        </div>
+      </div>
     </section>
 
-    <h2>Čo sa účastník naučí</h2>
-    <ul>
-      <li>dodržiavať hygienu a bezpečnosť pri práci,</li>
-      <li>používať a udržiavať profesionálne nástroje,</li>
-      <li>vykonávať základné aj pokročilé pánske strihy,</li>
-      <li>upravovať bradu a fúzy a zvládať techniky holenia,</li>
-      <li>vyberať vhodné postupy starostlivosti o vlasy,</li>
-      <li>komunikovať s klientom a organizovať pracovisko.</li>
-    </ul>
+    <section class="content" id="program">
+      <div class="wrap section-grid">
+        <div class="section-label">01 / Vzdelávací program</div>
+        <div>
+          <h2>Barbier / Barbierka</h2>
+          <p class="lead">Prakticky orientovaná príprava na odborné činnosti v oblasti pánskeho strihania, holenia a úpravy brady a fúzov.</p>
+          <p>Program je pripravovaný s ohľadom na kvalifikáciu <strong>Barbier/Barbierka, kód 500015, revízia 2</strong>. Obsah a konečné podmienky programu budú zverejnené po dokončení prípravy a overení všetkých požiadaviek príslušného systému akreditácie.</p>
+          <div class="program-note"><strong>Dôležité:</strong> Program je v príprave a v tejto chvíli ho neprezentujeme ako akreditovaný. Táto stránka nie je prihláškou na kurz a aktuálne sa neotvára zápis účastníkov.</div>
+          <dl class="details">
+            <div class="detail"><dt>Názov kvalifikácie</dt><dd>Barbier / Barbierka</dd></div>
+            <div class="detail"><dt>Kód a revízia</dt><dd>500015 / 2</dd></div>
+            <div class="detail"><dt>Forma vzdelávania</dt><dd>Plánovaná prezenčná forma</dd></div>
+            <div class="detail"><dt>Rozsah</dt><dd>Bude potvrdený v konečnom programe</dd></div>
+            <div class="detail"><dt>Vstupné požiadavky</dt><dd>Budú zverejnené po potvrdení podmienok programu</dd></div>
+            <div class="detail"><dt>Ukončenie a hodnotenie</dt><dd>Podľa konečného schváleného programu</dd></div>
+            <div class="detail"><dt>Cena a platba</dt><dd>Budú zverejnené pred otvorením prihlasovania</dd></div>
+            <div class="detail"><dt>Kapacita skupiny</dt><dd>Bude určená podľa priestorových a organizačných možností</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
 
-   
-    <h2>O vzdelávacom programe</h2>
-<p>
-  Program Barbier/Barbierka je určený záujemcom,
-  ktorí si chcú osvojiť odborné vedomosti a praktické
-  zručnosti v oblasti pánskeho strihania, úpravy brady
-  a profesionálnej starostlivosti o klienta.
-</p>
+    <section class="content" id="vystupy">
+      <div class="wrap section-grid">
+        <div class="section-label">02 / Obsah a výsledky</div>
+        <div>
+          <h2>Odborné základy. Istota v praxi.</h2>
+          <p class="muted">Nasledujúce oblasti vychádzajú z odporúčaného profilu absolventa kvalifikácie Barbier/Barbierka. Konkrétne učivo a rozsah jednotlivých tém sa ešte zosúladia s finálnym programom.</p>
+          <div class="cards">
+            <article class="card">
+              <div class="number">01</div>
+              <h3>Hygiena a bezpečnosť</h3>
+              <p>Hygienické zásady, bezpečnosť a ochrana zdravia pri práci, dezinfekcia nástrojov a bezpečné používanie pomôcok.</p>
+            </article>
+            <article class="card">
+              <div class="number">02</div>
+              <h3>Pánske strihy a styling</h3>
+              <p>Práca s nožnicami a strojčekom, klasické aj moderné strihy, prechody, styling a finálna úprava účesu.</p>
+            </article>
+            <article class="card">
+              <div class="number">03</div>
+              <h3>Holenie a úprava brady</h3>
+              <p>Príprava klienta, techniky holenia, tvarovanie brady a fúzov a následná starostlivosť o pokožku.</p>
+            </article>
+            <article class="card">
+              <div class="number">04</div>
+              <h3>Vlasy, pokožka a produkty</h3>
+              <p>Základy diagnostiky vlasov a vlasovej pokožky, výber vhodných prípravkov a rozpoznanie situácií, pri ktorých je vhodné službu neuplatniť.</p>
+            </article>
+            <article class="card">
+              <div class="number">05</div>
+              <h3>Farbenie a chemické úpravy</h3>
+              <p>Práca s farbiacimi a zosvetľovacími prípravkami v súlade s návodmi výrobcu a bezpečnostnými zásadami.</p>
+            </article>
+            <article class="card">
+              <div class="number">06</div>
+              <h3>Komunikácia s klientom</h3>
+              <p>Konzultácia požiadaviek, odporúčanie vhodnej úpravy a profesionálna komunikácia počas služby.</p>
+            </article>
+          </div>
+          <h3 style="margin-top:32px">Profil absolventa</h3>
+          <p>Očakávaným cieľom vzdelávania je pripraviť účastníka na bezpečný a profesionálny výkon barberingových úkonov: výber a používanie vhodného náradia a produktov, diagnostiku vlasov a pokožky, pánske strihanie a styling, holenie a úpravu brady a fúzov, základnú starostlivosť a poradenstvo klientovi. Výsledný profil bude presne zodpovedať konečnému schválenému programu.</p>
+        </div>
+      </div>
+    </section>
 
-<h3>Forma vzdelávania</h3>
-<p>
-  Výučba je plánovaná ako kombinácia teoretickej prípravy,
-  praktických ukážok a praktického nácviku pod vedením
-  lektora. Dôraz sa kladie na hygienu, bezpečnosť práce,
-  správne používanie nástrojov a postupné osvojovanie
-  odborných techník.
-</p>
+    <section class="content" id="metody">
+      <div class="wrap section-grid">
+        <div class="section-label">03 / Výučba a hodnotenie</div>
+        <div>
+          <h2>Učenie cez prax.</h2>
+          <p>Pripravovaný program počíta s kombináciou teoretickej prípravy, odborného výkladu, ukážok pracovných postupov a praktického nácviku. Praktická časť má podporovať postupné osvojenie techniky, hygienických návykov a bezpečnej práce s nástrojmi.</p>
+          <ul class="clean">
+            <li>Odborný výklad a vysvetlenie pracovných postupov.</li>
+            <li>Ukážky práce lektora a riadený praktický nácvik.</li>
+            <li>Priebežná spätná väzba k technike, hygiene a výsledku práce.</li>
+            <li>Hodnotenie a spôsob ukončenia budú zverejnené po definitívnom nastavení programu.</li>
+          </ul>
+          <p class="legal-note" style="margin-top:20px">Presný rozsah, vstupné podmienky, metódy hodnotenia, kapacita, cena a podmienky účasti budú doplnené pred otvorením prihlasovania. Do tohto času sa kurz nepredáva ani sa naň neprijímajú záväzné prihlášky.</p>
+        </div>
+      </div>
+    </section>
 
-<h3>Pre koho je program určený</h3>
-<p>
-  Program je pripravovaný najmä pre začiatočníkov
-  a záujemcov o profesiu barbier. Konkrétne vstupné
-  podmienky, rozsah vzdelávania a podmienky ukončenia
-  budú zverejnené po ich definitívnom stanovení.
-</p>
+    <section class="content" id="lektori">
+      <div class="wrap section-grid">
+        <div class="section-label">04 / Odborné vedenie</div>
+        <div>
+          <h2>Ľudia za remeslom.</h2>
+          <div class="lectors">
+            <article class="lecturer-card">
+              <div class="role">Odborný garant · barbering</div>
+              <h3>Mgr. Michal Jaroš</h3>
+              <p>Vysokoškolské vzdelanie druhého stupňa v odbore manažment. Absolvoval kvalifikačné vzdelávanie Kaderník–Kaderníčka, získal osvedčenie o úplnej kvalifikácii Kaderník a absolvoval kurz Lektor.</p>
+              <p>V odbore kaderníctva a holičstva pôsobí od roku 2019. Venuje sa pánskym strihom, úprave brady a odbornému vedeniu praktického vzdelávania.</p>
+            </article>
+            <article class="lecturer-card">
+              <div class="role">Odborná výučba · hygiena a zdravoveda</div>
+              <h3>MDDr. Jana Bučková</h3>
+              <p>Absolventka Univerzity Komenského v Bratislave v odbore zubné lekárstvo. Venuje sa odbornej praxi v zubnom lekárstve a v predchádzajúcom vzdelávacom projekte sa podieľala na výučbe zdravovedy a hygieny.</p>
+              <p>Konkrétne zaradenie do nového programu bude potvrdené pri jeho finálnom zostavení.</p>
+            </article>
+          </div>
+          <p class="legal-note" style="margin-top:20px">Na tejto stránke uvádzame len profesijné informácie relevantné pre vzdelávanie. Osobné údaje, ako dátumy narodenia a súkromné kontakty, nie sú zverejnené.</p>
+        </div>
+      </div>
+    </section>
 
-<p>
-  <strong>Stav programu:</strong> v príprave.
-  Program zatiaľ nie je prezentovaný ako akreditovaný.
-</p>
+    <section class="content" id="zazemie">
+      <div class="wrap section-grid">
+        <div class="section-label">05 / Zázemie</div>
+        <div>
+          <h2>Priestor pre praktické vzdelávanie.</h2>
+          <p>V pôvodnom projekte vzdelávania boli ako miesto realizácie uvedené priestory barbershopu na adrese Vojtaššákova 937, Tvrdošín, s barberským salónom a miestnosťou na teoretickú prípravu. Pred otvorením nového programu bude zabezpečenie priestorov, ich vybavenie a aktuálne hygienické podmienky znovu overené.</p>
+          <p class="muted">Technické a materiálne zabezpečenie programu bude zverejnené v konečnej podobe po potvrdení aktuálneho stavu a súladu s požiadavkami programu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="kontakt">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow" style="color:#c5cbbb">06 / Kontakt</div>
+            <h2 style="margin-top:16px">Ozvite sa nám.</h2>
+            <p class="muted">Máte otázku k pripravovanému vzdelávaniu? Kontaktujte EVER Academy. Informácie o otvorení kurzu zverejníme po dokončení prípravy programu.</p>
+          </div>
+          <div class="contact-items">
+            <div>
+              <div class="eyebrow" style="color:#c5cbbb">E-mail</div>
+              <a href="mailto:skliepok@gmail.com">skliepok@gmail.com</a>
+            </div>
+            <div>
+              <div class="eyebrow" style="color:#c5cbbb">Telefón</div>
+              <a href="tel:+421917846025">0917 846 025</a>
+            </div>
+            <div>
+              <div class="eyebrow" style="color:#c5cbbb">Poskytovateľ</div>
+              <p style="margin:0">beardguru s.r.o.<br>Sídlisko 163/45, 027 44 Tvrdošín<br>IČO: 55410391</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    EVER Academy · Odborné vzdelávanie v oblasti barberingu
-  <section class="contact">
-  <h2>Kontakt</h2>
-  <p>EVER Academy</p>
-  <p>
-    E-mail:
-    <a href="mailto:skliepok@gmail.com">skliepok@gmail.com</a>
-  </p>
-  <p>
-    Telefón:
-    <a href="tel:+421917846025">0917 846 025</a>
-  </p>
-</section>
+  <footer class="wrap">
+    <div><div class="foot-brand">EVER ACADEMY</div><div>Odborné vzdelávanie v oblasti barberingu</div></div>
+    <div>© <span id="year">2026</span> beardguru s.r.o.</div>
   </footer>
 </body>
 </html>
